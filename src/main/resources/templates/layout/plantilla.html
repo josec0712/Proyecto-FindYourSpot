@@ -4,6 +4,7 @@
     <head th:fragment="head">
         <title>Find Your Spot</title>
         <meta charset="UTF-8"/>
+        <link href="../../static/css/index.css" rel="stylesheet" type="text/css"/>
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -13,33 +14,118 @@
 
     <body>
         <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-                <div class="container">
-                    <a th:href="@{/}" class="navbar-brand">Find Your Spot</a>
-                    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0 headerIndex">
+                <div class="container d-flex flex-row">
+                    <div class="titleSite p-2 justify-content-center">
+                        <a th:href="@{/}"><h1>Find Your Spot</h1></a>
+                        <p>[[#{plantilla.slogan}]]</p>
+                    </div>
+                    <div class="collapse navbar-collapse justify-content-end p-2" id="navbarCollapse">
                         <div class="col-md-3">
                             <ul class="navbar-nav">                                
                                 <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>
                                 <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=en)}">EN</a></li>
+                                <li class="nav-item px-2"><button type="button" class="btnLogIn" data-bs-toggle="modal" data-bs-target="#LogInModal" title="Log In">
+                                        <i class="fa-solid fa-user"></i>
+                                    </button></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </nav>
-            <section id="main-header" class="py-2 bg-success text-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1><i class="fas fa-cog"></i> [[#{plantilla.slogan}]]</h1>
+        </header>
+        <!-- Modal Log In -->
+        <section th:fragment="logIn">
+            <div id="LogInModal" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <div class="modal-body d-flex flex-row w-100">
+                            <div class="p-2 flex-fill">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Correo</label>
+                                                <input type="text" class="form-control" id="username" placeholder="Digite su correo"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="password" placeholder="Digite su contraseña"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100 btnSearch">Iniciar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2 flex-fill">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="text-center mb-4">Registrarme</h3>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="nameInput" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="nameInput" placeholder="Digite su nombre"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="lastNameInput" class="form-label">Apellidos</label>
+                                                <input type="text" class="form-control" id="lastNameInput" placeholder="Digite sus apellidos"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="emailInput" class="form-label">Correo</label>
+                                                <input type="text" class="form-control" id="emailInput" placeholder="Digite su correo"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="passwordInput" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="passwordInput" placeholder="Digite su nueva contraseña"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="passwordConfirmInput" class="form-label">Confirme su contraseña</label>
+                                                <input type="text" class="form-control" id="passwordConfirmInput" placeholder="Digite su contraseña otra ves"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="tipoDropdown" class="form-label">Seleccione el tipo de usuario</label>
+                                                <select class="form-control" id="tipoDropdown">
+                                                    <option>Comprador</option>
+                                                    <option>Vendedor</option>
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100 btnSearch">Regitrar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </header>
 
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="searchIndex" class="container d-flex flex-row justify-content-center p-2">
+            <div class="p-4">
+                <p class="SearchTitle">[[#{plantilla.titulosSearch}]]</p>
+                <form class="container d-inline-flex flex-row flex  gap-3 justify-content-center p-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="InputLocation" placeholder='Ubicación'/>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="InputTipo">
+                            <option>Casa</option>
+                            <option>Terreno</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btnSearch">Submit</button>
+                </form>
+            </div>
+        </section>
         <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
             <div class="container">
                 <div class="col">

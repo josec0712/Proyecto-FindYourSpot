@@ -5,11 +5,12 @@
       xmlns:th="http://www.thymeleaf.org">
        
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Find Your Spot</title>      
+        <title>Find Your Spot</title>
     </head>
-       
     <body>
          <header th:replace="~{layout/plantilla :: header}"/>
-        <footer th:replace="~{layout/plantilla :: footer}"/>
+         <section th:replace="~{layout/plantilla :: logIn}" />
+         <section th:replace="~{layout/plantilla :: searchIndex}" />
+         <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
