@@ -31,7 +31,7 @@ public class HomeController {
      * @param model
      * @return 
      */
-    @PostMapping("/registrar")
+    @PostMapping("/registrarTest")
     public String UsuarioRegistrar(Usuario usuario,
             @RequestParam("imagenFile") MultipartFile imagenFile, Model model) {
         try {
