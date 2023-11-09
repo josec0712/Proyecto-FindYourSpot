@@ -3,14 +3,97 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
-       
+
     <head th:replace="~{layout/plantilla :: head}">
         <title>Find Your Spot</title>
     </head>
     <body>
-         <header th:replace="~{layout/plantilla :: header}"/>
-         <section th:replace="~{layout/plantilla :: logIn}" />
-         <section th:replace="~{layout/plantilla :: searchIndex}" />
-         <footer th:replace="~{layout/plantilla :: footer}"/>
+        <header th:replace="~{layout/plantilla :: header}"/>
+      <!--  <section>
+            <div id="LogInModal" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <div class="modal-body d-flex flex-row w-100">
+                            <div class="p-2 flex-fill">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Correo</label>
+                                                <input type="text" class="form-control" id="username" placeholder="Digite su correo"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="password" placeholder="Digite su contraseña"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100 btnSearch">Iniciar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-2 flex-fill">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="text-center mb-4">Registrarme</h3>
+                                        <form th:action="@{/registrar}" th:object="${usuario}" method="POST" class="was-validated" enctype="multipart/form-data">
+                                            <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                                            <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                                            <div class="mb-3">
+                                                <label for="nombre" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" name="nombre" th:field="*{nombre}" required="true"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="apellidos" class="form-label">Apellidos</label>
+                                                <input type="text" class="form-control" name="apellidos" th:field="*{apellidos}" required="true"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="correo" class="form-label">Correo</label>
+                                                <input type="text" class="form-control" name="correo" th:field="*{correo}" required="true"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="contrasena" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" name="contrasena" th:field="*{contrasena}" required="true"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="tipo" class="form-label">Seleccione el tipo de usuario</label>
+                                                <select class="form-control" name="tipo" th:field="*{tipo}">
+                                                    <option>Comprador</option>
+                                                    <option>Vendedor</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="imagenFile">Foto de usuario</label>
+                                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                                <img id="fotoUsuario" src="@{${usuario.rutaImagen}}" alt="your image" height="200"/>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100 btnSearch">Regitrar</button>
+                                        </form>
+                                        <div th:if="${message}" class="alert alert-success" role="alert">
+                                            <strong>Success!</strong> <span th:text="${message}"></span>
+                                        </div>
+
+                                        <div th:if="${error}" class="alert alert-danger" role="alert">
+                                            <strong>Error!</strong> <span th:text="${error}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> -->
+        <section th:replace="~{layout/plantilla :: searchIndex}" />
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>

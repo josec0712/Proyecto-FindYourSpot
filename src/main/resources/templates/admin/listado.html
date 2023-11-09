@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Find Your Spot</title>      
+    </head>
+
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section th:replace="~{admin/fragmentos :: botonesAgregarUsuario}"/>
+        <section th:replace="~{admin/fragmentos :: agregarUsuario}"/>
+        <section th:replace="~{admin/fragmentos :: listadoUsuario}"/>
+
+        <!--<section th:replace="~{admin/fragmentos :: botonesAgregarVendedor}"/>
+        <section th:replace="~{admin/fragmentos :: agregarVendedor}"/>
+        <section th:replace="~{admin/fragmentos :: listadoVendedor}"/>
+
+        <section th:replace="~{admin/fragmentos :: botonesAgregarPropiedad}"/>
+        <section th:replace="~{admin/fragmentos :: agregarPropiedad}"/>
+        <section th:replace="~{admin/fragmentos :: listadoPropiedad}"/>
+
+        <section th:replace="~{admin/fragmentos :: botonesAgregarComunidad}"/>
+        <section th:replace="~{admin/fragmentos :: agregarComunidad}"/>
+        <section th:replace="~{admin/fragmentos :: listadoComunidad}"/>-->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+    </body>
+</html>
