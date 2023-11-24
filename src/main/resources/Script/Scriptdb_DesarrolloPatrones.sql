@@ -39,6 +39,12 @@ CREATE TABLE proyecto_FindYourHome.vendedor (
     )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+INSERT INTO proyecto_FindYourHome.vendedor (id_usuario,id_vendedor,telefono,activo) VALUES 
+('1','21', '63258977', TRUE ), 
+('2','52',  '88996621', TRUE),
+('3','33','66551145', TRUE);
+
     
 -- Tabla de Urbanizacion o Condominios
 CREATE TABLE proyecto_FindYourHome.comunidad (
@@ -70,10 +76,10 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 INSERT INTO proyecto_FindYourHome.propiedad (id_propiedad,id_vendedor,id_comunidad,nombre, descripcion, precio, tipoPropiedad,ubicacion,fecha_publicacion) VALUES 
-('1','21', '19', 'bella vista','linda casa con mirador para atardeser en las lomas','1500000','Quinta','limon','10/8/22' ), 
-('2','52',  '23','mira mar','Justo cerca del mar para bañarse todos los dias','2500000', 'casa','guanacaste','19/2/23'),
-('3','33','39','el roble', 'rodeado de un bosque genial con olor a madera','3500000','granja','heredia','12/12/21'),
-('4','54','14','las olas', 'apenas para los amantes de la arena y el sol','9500000', 'villa','puntarenas','16/1/20');
+('1','21','19', 'bella vista','linda casa con mirador para atardeser en las lomas','1500000','Quinta','limon','2023-08-09' ), 
+('2','52','23','mira mar','Justo cerca del mar para bañarse todos los dias','2500000', 'casa','guanacaste','2023-01-10'),
+('3','33','39','el roble', 'rodeado de un bosque genial con olor a madera','3500000','granja','heredia','2023-09-11');
+
 
 
 -- Tabla de Comentarios
@@ -99,6 +105,12 @@ CREATE TABLE proyecto_FindYourHome.imagenComunidad (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+INSERT INTO proyecto_FindYourHome.vendedor (id_imagenComunidad,id_comunidad,ruta_imagen) VALUES
+('5','19', 'https://venta.co.cr/ws/image.php?img=https%3A%2F%2Fwww.venta.co.crimages_users%2F256%2F268446_property_1626867986_60f809126913e.jpg' ), 
+('6','23',  'https://www.altavistacr.com/wp-content/uploads/2019/03/Casa-en-Bosques-de-Altamonte-2-Mediano.jpg'),
+('7','39','https://1bienesraicescostarica.com/wp-content/uploads/2020/08/Bosques_01-scaled.jpg');
+
 
 CREATE TABLE proyecto_FindYourHome.imagenPropiedad (
     id_imagenPropiedad INT NOT NULL AUTO_INCREMENT,
