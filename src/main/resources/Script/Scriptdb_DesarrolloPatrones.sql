@@ -61,7 +61,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE proyecto_FindYourHome.propiedad (
     id_propiedad INT NOT NULL AUTO_INCREMENT,
     id_vendedor INT NOT NULL,
-    id_comunidad INT,
+    c INT,
     nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(1600) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,

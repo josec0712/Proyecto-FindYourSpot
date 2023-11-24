@@ -17,13 +17,13 @@ import org.springframework.web.multipart.MultipartFile;
 public class VendedorController {
 
     @Autowired
-    private VendedorService VendedorService;
+    private VendedorService vendedorService;
 
     @GetMapping("/listado")
     public String listado(Model model) {
-        var vendedor = VendedorService.getVendedores();
-        model.addAttribute("vendedor", vendedor);
-        model.addAttribute("totalVendedores", vendedor.size());
+        var vendedores = vendedorService.getVendedores();
+        model.addAttribute("vendedor", vendedores);
+        model.addAttribute("totalVendedores", vendedores.size());
         return "/vendedor/listado";
     }
 
@@ -39,26 +39,26 @@ public class VendedorController {
     public String vendedorGuardar(Vendedor vendedor,
             @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
-            VendedorService.save(vendedor);
+            vendedorService.save(vendedor);
             vendedor.setRutaImagen(
                     firebaseStorageService.cargaImagen(
                             imagenFile,
                             "vendedor",
                             vendedor.getIdVendedor()));
         }
-        VendedorService.save(vendedor);
+        vendedorService.save(vendedor);
         return "redirect:/vendedor/listado";
     }
 
     @GetMapping("/eliminar/{idVendedor}")
     public String vendedorEliminar(Vendedor vendedor) {
-        VendedorService.delete(vendedor);
+        vendedorService.delete(vendedor);
         return "redirect:/vendedor/listado";
     }
 
     @GetMapping("/modificar/{idVendedor}")
     public String vendedorModificar(Vendedor vendedor, Model model) {
-        vendedor = VendedorService.getVendedor(vendedor);
+        vendedor = vendedorService.getVendedor(vendedor);
         model.addAttribute("vendedor", vendedor);
         return "/vendedor/modifica";
     }

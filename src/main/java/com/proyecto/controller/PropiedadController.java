@@ -21,9 +21,9 @@ public class PropiedadController {
 
     @GetMapping("/listado")
     public String listado(Model model) {
-        var propiedads = propiedadService.getPropiedades();
-        model.addAttribute("propiedads", propiedads);
-        model.addAttribute("totalPropiedads", propiedads.size());
+        var propiedades = propiedadService.getPropiedades();
+        model.addAttribute("propiedades", propiedades);
+        model.addAttribute("totalPropiedads", propiedades.size());
         return "/propiedad/listado";
     }
 
