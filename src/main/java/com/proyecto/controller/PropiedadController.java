@@ -23,7 +23,7 @@ public class PropiedadController {
     public String listado(Model model) {
         var propiedades = propiedadService.getPropiedades();
         model.addAttribute("propiedades", propiedades);
-        model.addAttribute("totalPropiedads", propiedades.size());
+        model.addAttribute("totalPropiedades", propiedades.size());
         return "/propiedad/listado";
     }
 

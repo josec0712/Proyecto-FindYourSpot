@@ -14,7 +14,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
-        System.out.println("Hola");
         return "index"; // Return the name of your index.html template
     }
     
