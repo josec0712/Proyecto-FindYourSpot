@@ -44,28 +44,18 @@
                               enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="nombre">[[#{propiedad.id_propiedad}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"/>
+                                    <label for="id_propiedad">[[#{propiedad.id_propiedad}]]</label>
+                                    <input type="text" class="form-control" name="id_propiedad" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="apellidos">[[#{propiedad.id_vendedor}]]</label>
-                                    <input type="text" class="form-control" name="apellidos" required="true"/>
+                                    <label for="id_usuario">[[#{propiedad.id_usuario}]]</label>
+                                    <input type="text" class="form-control" name="id_usuario" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="vendedor">[[#{propiedad.id_vendedor}]]</label>
-                                    <input type="text" class="form-control" name="username" required="true"/>
+                                    <label for="precio">[[#{propiedad.precio}]]</label>
+                                    <input type="text" class="form-control" name="precio" required="true"/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="Tipo">[[#{propiedad.tipoPropiedad}]]</label>
-                                    <input type="text" class="form-control" name="tipo" required="true"/>
-                                </div>
-                             
-                                <div class="mb-3">
-                                    <label for="imagen">[[#{propiedad.imagen}]]</label>
-                                    <input class="form-control" type="file" name="imagenFile"
-                                           onchange="readURL(this);"/>
-                                    <img id="blah" src="#" alt="your image" height="200"/>
-                                </div>
+                               
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
@@ -77,34 +67,29 @@
         </section>
 
         <!-- 3 Sección principal para mostrar la informaccion de la entidad propiedad -->
-        <section th:fragment="listadoPropiedads" id="propiedads">
+        <section th:fragment="listadoPropiedades" id="propiedades">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
                                 <h4>[[#{propiedad.listado}]]</h4></div>
-                            <div th:if="${propiedads != null and !propiedads.empty}">
+                            <div th:if="${propiedades != null and !propiedades.empty}">
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr><th>#</th>
+                                            
+                                            <th>[[#{propiedad.id_vendedor}]]</th>
                                             <th>[[#{propiedad.nombre}]]</th>
-                                            <th>[[#{propiedad.descripcion}]]</th>
-                                            <th>[[#{propiedad.precio}]]</th>
-                                            <th>[[#{propiedad.tipo}]]</th>
-                                            <th>[[#{propiedad.ubicacion}]]</th>
-                                            <th>[[#{propiedad.fechaPublicacion}]]</th>
+                                            
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="propiedad, contador : ${propiedades}">
                                             <td>[[${contador.count}]]</td>
+                                            
+                                            <td>[[${propiedad.id_vendedor}]]</td>
                                             <td>[[${propiedad.nombre}]]</td>
-                                            <td>[[${propiedad.descripcion}]]</td>
-                                            <td>[[${propiedad.precio}]]</td>
-                                            <td>[[${propiedad.tipoPropiedad}]]</td>
-                                            <td>[[${propiedad.ubicacion}]]</td>
-                                            <td>[[${propiedad.fechaPublicacion}]]</td>
                                             <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <a th:href="@{/propiedad/eliminar/}+${propiedad.idPropiedad}"
                                                    class="btn btn-danger">
@@ -115,7 +100,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" th:if="${propiedads == null or propiedads.empty}">
+                            <div class="text-center p-2" th:if="${propiedades == null or propiedades.empty}">
                                 <span>[[#{lista.vacia}]]</span>
                             </div>
                         </div>
@@ -153,29 +138,24 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="nombre">[[#{propiedad.nombre}]]</label>
+                                                    <label for="nombre">[[#{propiedad.id_vendedor}]]</label>
                                                     <input type="text" class="form-control" 
                                                            name="nombre" th:field="*{nombre}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="apellidos">[[#{propiedad.apellidos}]]</label>
+                                                    <label for="id_comunidad">[[#{propiedad.id_comunidad}]]</label>
                                                     <input type="text" class="form-control" 
-                                                           name="apellidos" th:field="*{apellidos}"
+                                                           name="id_comunidad" th:field="*{id_comunidad}"
                                                            required="true">
                                                 </div>
+                                          
                                                 <div class="mb-3">
-                                                    <label for="email">[[#{propiedad.correo}]]</label>
-                                                    <input type="email" class="form-control" 
-                                                           name="correo" th:field="*{correo}"
-                                                           required="true">
+                                                    <label for="nombre">[[#{propiedad.nombre}]]</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="nombre" th:field="*{nombre}">
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="telefono">[[#{propiedad.telefono}]]</label>
-                                                    <input type="tel" class="form-control" 
-                                                           name="telefono" th:field="*{telefono}">
-                                                </div>
-                                                <div class="mb-3">
+                                               <div class="mb-3">
                                                     <label for="imagen">[[#{propiedad.imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />

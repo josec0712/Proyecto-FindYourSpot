@@ -23,7 +23,7 @@ public class ComunidadController {
     public String listado(Model model) {
         var comunidades = comunidadService.getComunidades();
         model.addAttribute("comunidades", comunidades);
-        model.addAttribute("totalComunidads", comunidades.size());
+        model.addAttribute("totalComunidades", comunidades.size());
         return "/comunidad/listado";
     }
 
