@@ -21,7 +21,8 @@ CREATE TABLE proyecto_FindYourHome.usuario (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-    
+
+ 
     -- Tabla de vendedor
 CREATE TABLE proyecto_FindYourHome.vendedor (
 	id_vendedor INT NOT NULL AUTO_INCREMENT,
@@ -33,6 +34,8 @@ CREATE TABLE proyecto_FindYourHome.vendedor (
     )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+
     
 -- Tabla de Urbanizacion o Condominios
 CREATE TABLE proyecto_FindYourHome.comunidad (
@@ -44,12 +47,13 @@ CREATE TABLE proyecto_FindYourHome.comunidad (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
     
 -- Tabla de Propiedad
 CREATE TABLE proyecto_FindYourHome.propiedad (
     id_propiedad INT NOT NULL AUTO_INCREMENT,
     id_vendedor INT NOT NULL,
-    c INT,
+    id_comunidad INT,
     nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(1600) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
@@ -62,6 +66,9 @@ CREATE TABLE proyecto_FindYourHome.propiedad (
     )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+
+
 
 -- Tabla de Comentarios
 CREATE TABLE proyecto_FindYourHome.comentario (
@@ -87,6 +94,8 @@ CREATE TABLE proyecto_FindYourHome.imagenComunidad (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
+
+
 CREATE TABLE proyecto_FindYourHome.imagenPropiedad (
     id_imagenPropiedad INT NOT NULL AUTO_INCREMENT,
     id_propiedad INT NOT NULL,
@@ -109,19 +118,17 @@ CREATE TABLE proyecto_FindYourHome.favorito (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
--- Datos
-
 INSERT INTO proyecto_FindYourHome.usuario (nombre, apellidos, contrasena, correo, tipo, ruta_imagen) VALUES
-('Ana', 'López Pérez', 'a1b2c3', 'alopez@gmail.com', 'usuario registrado', 'https://example.com/ana.jpg'),
-('Carlos', 'Gutiérrez Rodríguez', 'xYz123', 'cgutierrez@gmail.com', 'usuario registrado', 'https://example.com/carlos.jpg'),
-('Luis', 'Martínez Solís', 'p@ssw0rd', 'lmartinez@gmail.com', 'administrador', 'https://example.com/luis.jpg'),
-('Laura', 'Hernández Jiménez', 'qwerty', 'lhernandez@gmail.com', 'usuario registrado', 'https://example.com/laura.jpg'),
-('Miguel', 'Sánchez Ramírez', 'm1guel123', 'msanchez@gmail.com', 'agente de bienes raíces', 'https://example.com/miguel.jpg'),
-('Isabel', 'Torres Castro', 'pass123', 'itorres@gmail.com', 'usuario registrado', 'https://example.com/isabel.jpg'),
-('Gabriel', 'Mora García', 'g@briel', 'gmora@gmail.com', 'agente de bienes raíces', 'https://example.com/gabriel.jpg'),
-('Patricia', 'Ortiz Ruiz', 'pati123', 'portiz@gmail.com', 'usuario registrado', 'https://example.com/patricia.jpg'),
-('Ricardo', 'Díaz Vargas', 'r1cardo', 'rdiaz@gmail.com', 'usuario registrado', 'https://example.com/ricardo.jpg'),
-('María', 'Castillo Méndez', 'maria456', 'mcastillo@gmail.com', 'usuario registrado', 'https://example.com/maria.jpg');
+('Ana', 'López Pérez', 'a1b2c3', 'alopez@gmail.com', 'usuario registrado', 'https://vivolabs.es/wp-content/uploads/2022/03/perfil-mujer-vivo.png'),
+('Carlos', 'Gutiérrez Rodríguez', 'xYz123', 'cgutierrez@gmail.com', 'usuario registrado', 'https://i.pinimg.com/originals/ec/b5/0a/ecb50a4d065ea8e0a993df0be6ff9542.jpg'),
+('Luis', 'Martínez Solís', 'p@ssw0rd', 'lmartinez@gmail.com', 'administrador', 'https://i.pinimg.com/originals/a6/82/db/a682dbfb9bfd60236191c303ff8056de.jpg'),
+('Laura', 'Hernández Jiménez', 'qwerty', 'lhernandez@gmail.com', 'usuario registrado', 'https://i.pinimg.com/originals/bf/d6/d5/bfd6d59c28f5665d73b20f5df4419d72.jpg'),
+('Miguel', 'Sánchez Ramírez', 'm1guel123', 'msanchez@gmail.com', 'agente de bienes raíces', 'https://i.pinimg.com/originals/eb/69/97/eb69971b571b5faa04fe4e49eb5fabea.jpg'),
+('Isabel', 'Torres Castro', 'pass123', 'itorres@gmail.com', 'usuario registrado', 'https://www.okchicas.com/wp-content/uploads/2018/01/Poses-para-una-buena-foto-de-perfil-15-1-701x700.jpg'),
+('Gabriel', 'Mora García', 'g@briel', 'gmora@gmail.com', 'agente de bienes raíces', 'https://vivolabs.es/wp-content/uploads/2022/03/perfil-hombre-vivo.png'),
+('Patricia', 'Ortiz Ruiz', 'pati123', 'portiz@gmail.com', 'usuario registrado', 'https://img.aeroexpo.online/images_ar/projects/images-g/elevar-perfil-mujeres-ingenieria-6393-14652745.jpg'),
+('Ricardo', 'Díaz Vargas', 'r1cardo', 'rdiaz@gmail.com', 'usuario registrado', 'https://photografos.com.br/wp-content/uploads/2020/09/fotografia-para-perfil.jpg'),
+('María', 'Castillo Méndez', 'maria456', 'mcastillo@gmail.com', 'usuario registrado', 'https://img.freepik.com/fotos-premium/mujer-sonriendo-gafas-sol-cabeza_362480-2259.jpg');
 
 INSERT INTO proyecto_FindYourHome.vendedor (id_usuario, telefono, activo) VALUES
 (1, '70001234', TRUE),
@@ -182,3 +189,4 @@ INSERT INTO proyecto_FindYourHome.favorito (id_usuario, id_propiedad) VALUES
 (8, 8),
 (9, 9),
 (10, 10);
+
