@@ -39,12 +39,6 @@ public class ComunidadController {
     public String comunidadGuardar(Comunidad comunidad,
             @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
-            comunidadService.save(comunidad);
-            comunidad.setRutaImagen(
-                    firebaseStorageService.cargaImagen(
-                            imagenFile,
-                            "comunidad",
-                            comunidad.getIdComunidad()));
         }
         comunidadService.save(comunidad);
         return "redirect:/comunidad/listado";

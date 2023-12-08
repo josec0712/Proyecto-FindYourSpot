@@ -47,13 +47,18 @@
                                     <label for="username">[[#{propiedad.id_propiedad}]]</label>
                                     <input type="text" class="form-control" name="username" required="true"/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="username">[[#{propiedad.id_usuario}]]</label>
-                                    <input type="text" class="form-control" name="username" required="true"/>
-                                </div>
+                               
                                 <div class="mb-3">
                                     <label for="precio">[[#{propiedad.precio}]]</label>
                                     <input type="text" class="form-control" name="precio" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Nombre">[[#{propiedad.nombre}]]</label>
+                                    <input type="text" class="form-control" name="Nombre" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Nombre">[[#{propiedad.fecha_publicacion}]]</label>
+                                    <input type="text" class="form-control" name="Nombre" required="true"/>
                                 </div>
                                
                             </div>
@@ -79,22 +84,23 @@
                                     <thead class="table-dark">
                                         <tr><th>#</th>
                                             
-                                            <th>[[#{propiedad.id_vendedor}]]</th>
+                                            <th>[[#{propiedad.id_propiedad}]]</th>
                                             <th>[[#{propiedad.nombre}]]</th>
-                                            
+                                            <th>[[#{propiedad.precio}]]</th>
+                                             <th>[[#{propiedad.fecha_publicacion}]]</th>
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="propiedad, contador : ${propiedades}">
                                             <td>[[${contador.count}]]</td>
                                             
-                                            <td>[[${propiedad.id_vendedor}]]</td>
+                                            <td>[[${propiedad.precio}]]</td>
                                             <td>[[${propiedad.nombre}]]</td>
                                             <td sec:authorize="hasRole('ROLE_ADMIN')">
-                                                <a th:href="@{/propiedad/eliminar/}+${propiedad.idPropiedad}"
+                                                <a th:href="@{/propiedad/eliminar/}+${idPropiedad}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-                                                <a th:href="@{/propiedad/modificar/}+${propiedad.idPropiedad}"
+                                                <a th:href="@{/propiedad/modificar/}+${idPropiedad}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
@@ -181,7 +187,7 @@
                         </a>
                     </div>
                     <div class="col-md-4 d-grid" sec:authorize="hasRole('ROLE_ADMIN')">                                
-                        <a th:href="@{/propiedad/eliminar/}+${propiedad.idPropiedad}"
+                        <a th:href="@{/propiedad/eliminar/}+${propiedad.id_Propiedad}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>

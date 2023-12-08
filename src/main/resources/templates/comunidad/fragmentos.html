@@ -60,12 +60,7 @@
                                     <input type="text" class="form-control" name="tipo" required="true"/>
                                 </div>
                              
-                                <div class="mb-3">
-                                    <label for="imagen">[[#{comunidad.imagen}]]</label>
-                                    <input class="form-control" type="file" name="imagenFile"
-                                           onchange="readURL(this);"/>
-                                    <img id="blah" src="#" alt="your image" height="200"/>
-                                </div>
+                                
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
@@ -91,7 +86,7 @@
                                             <th>[[#{comunidad.id_comunidad}]]</th>
                                             <th>[[#{comunidad.nombre}]]</th>
                                             <th>[[#{comunidad.tipo}]]</th>
-                                            <th>[[#{comunidad.imagen}]]</th>
+                                            
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
@@ -170,12 +165,7 @@
                                                     <input type="text" class="form-control" 
                                                            name="descripcion" th:field="*{descripcion}">
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="imagen">[[#{comunidad.imagen}]]</label>
-                                                    <input class="form-control" type="file" name="imagenFile"
-                                                           onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${comunidad.rutaImagen}}" alt="your image" height="200"/>
-                                                </div>
+                                               
                                             </div>
                                         </div>
                                     </div>

@@ -27,10 +27,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-/**
- *
- * @author jafet
- */
 @Service
 public class ReporteServiceImpl implements ReporteService {
 

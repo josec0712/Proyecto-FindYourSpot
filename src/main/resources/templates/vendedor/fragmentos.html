@@ -86,7 +86,7 @@
                                         <tr><th>#</th>
                                             <th>[[#{vendedor.nombre}]]</th>
                                             <th>[[#{vendedor.apellidos}]]</th>
-                                            <th>[[#{vendedor.imagen}]]</th>
+                                            
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
@@ -95,10 +95,10 @@
                                             <td>[[${vendedor.nombre}]]</td>
                                             <td>[[${vendedor.apellidos}]]</td>
                                             <td sec:authorize="hasRole('ROLE_ADMIN')">
-                                                <a th:href="@{/vendedor/eliminar/}+${vendedor.idVendedor}"
+                                                <a th:href="@{/vendedor/eliminar/}+${idVendedor}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-                                                <a th:href="@{/vendedor/modificar/}+${vendedor.idVendedor}"
+                                                <a th:href="@{/vendedor/modificar/}+${idVendedor}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>

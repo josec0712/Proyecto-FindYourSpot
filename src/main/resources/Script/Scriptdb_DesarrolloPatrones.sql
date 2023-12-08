@@ -27,6 +27,8 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE proyecto_FindYourHome.vendedor (
 	id_vendedor INT NOT NULL AUTO_INCREMENT,
     id_usuario INT NOT NULL,
+	nombre VARCHAR(100),
+    apellidos VARCHAR(100),
     telefono VARCHAR(15) NULL,
     activo bool NOT NULL,
     PRIMARY KEY (id_vendedor),
@@ -57,7 +59,7 @@ CREATE TABLE proyecto_FindYourHome.propiedad (
     nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(1600) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
-    tipoPropiedad VARCHAR(50) NOT NULL,  -- Por ejemplo, 'casa', 'apartamento', 'terreno', etc.
+    tipo_propiedad VARCHAR(50) NOT NULL,  -- Por ejemplo, 'casa', 'apartamento', 'terreno', etc.
     ubicacion VARCHAR(100),
     fecha_publicacion DATE NOT NULL,
     PRIMARY KEY (id_propiedad),
@@ -130,17 +132,17 @@ INSERT INTO proyecto_FindYourHome.usuario (nombre, apellidos, contrasena, correo
 ('Ricardo', 'Díaz Vargas', 'r1cardo', 'rdiaz@gmail.com', 'usuario registrado', 'https://photografos.com.br/wp-content/uploads/2020/09/fotografia-para-perfil.jpg'),
 ('María', 'Castillo Méndez', 'maria456', 'mcastillo@gmail.com', 'usuario registrado', 'https://img.freepik.com/fotos-premium/mujer-sonriendo-gafas-sol-cabeza_362480-2259.jpg');
 
-INSERT INTO proyecto_FindYourHome.vendedor (id_usuario, telefono, activo) VALUES
-(1, '70001234', TRUE),
-(3, '88997766', TRUE),
-(4, '66554433', TRUE),
-(6, '77778888', TRUE),
-(7, '55556666', TRUE),
-(8, '44445555', TRUE),
-(10, '33334444', TRUE),
-(2, '99998888', TRUE),
-(5, '22221111', TRUE),
-(9, '11112222', TRUE);
+INSERT INTO proyecto_FindYourHome.vendedor (id_usuario,id_vendedor,nombre,apellidos, telefono, activo) VALUES
+(1,1,'Pedro','marin', '70001234', TRUE),
+(3,2,'Samuel','Perez', '88997766', TRUE),
+(4,3,'Federica','Rojas', '66554433', TRUE),
+(6,4,'Rosibel', 'Araya', '77778888', TRUE),
+(7,5,'Kendall','Tijerino', '55556666', TRUE),
+(8,6,'Fabiola','Acosta', '44445555', TRUE),
+(10,7,'Ligia','Castro', '33334444', TRUE),
+(2,8,'David','Luna', '99998888', TRUE),
+(5,9,'Allan','Mendoza', '22221111', TRUE),
+(9,10,'Sandra','Fernandez', '11112222', TRUE);
 
 INSERT INTO proyecto_FindYourHome.comunidad (nombre, tipo, descripcion) VALUES
 ('Residencial San José', 'Residencial', 'Hermosa comunidad con parques y áreas verdes.'),
@@ -154,7 +156,7 @@ INSERT INTO proyecto_FindYourHome.comunidad (nombre, tipo, descripcion) VALUES
 ('Rincón del Valle', 'Residencial', 'Urbanización con acceso controlado y seguridad.'),
 ('Altos de la Montaña', 'Condominio', 'Condominio en la cima de la montaña con vistas impresionantes.');
 
-INSERT INTO proyecto_FindYourHome.propiedad (id_vendedor, id_comunidad, nombre, descripcion, precio, tipoPropiedad, ubicacion, fecha_publicacion) VALUES
+INSERT INTO proyecto_FindYourHome.propiedad (id_vendedor, id_comunidad, nombre, descripcion, precio, tipo_propiedad, ubicacion, fecha_publicacion) VALUES
 (1, 1, 'Casa en Residencial San José', 'Amplia casa de dos pisos con jardín y garaje.', 350000, 'Casa', 'San José', '2023-11-15'),
 (2, 2, 'Apartamento de Lujo en Los Alamos', 'Moderno apartamento con acabados de alta calidad.', 500000, 'Apartamento', 'Los Alamos', '2023-10-20'),
 (3, 3, 'Casa Familiar en Villas del Sol', 'Acogedora casa con patio y espacios para niños.', 280000, 'Casa', 'Villas del Sol', '2023-11-01'),

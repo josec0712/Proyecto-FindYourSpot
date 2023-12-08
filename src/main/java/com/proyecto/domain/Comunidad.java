@@ -23,7 +23,7 @@ public class Comunidad implements Serializable{
     private String nombre;
     private String tipo;
     private String descripcion;
-    private String rutaImagen;
+    
 
     public Comunidad() {
     }
