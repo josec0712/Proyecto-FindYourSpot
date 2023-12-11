@@ -122,10 +122,10 @@ INSERT INTO proyecto_FindYourHome.vendedor (id_vendedor,nombre,apellidos, telefo
 
 INSERT INTO proyecto_FindYourHome.comunidad (nombre, tipo, descripcion,ruta_imagen) VALUES
 ('Residencial San José', 'Residencial', 'Hermosa comunidad con parques y áreas verdes.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
-('Condominio Los Alamos', 'Condominio', 'Condominio exclusivo con seguridad las 24 horas.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
+('Condominio Los Alamos', 'Condominio', 'Condominio exclusivo con seguridad las 24 horas.', 'https://infonegocios.info/content/images/2022/07/21/189894/conversions/800x453-alamos-centro-de-cuidados-medium-size.jpg'),
 ('Villas del Sol', 'Residencial', 'Comunidad tranquila y segura para vivir en familia.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 ('Bosques de la Montaña', 'Condominio', 'Condominio rodeado de naturaleza y vistas espectaculares.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
-('Parque Residencial', 'Residencial', 'Urbanización con parques recreativos y canchas deportivas.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
+('Parque Residencial', 'Residencial', 'Urbanización con parques recreativos y canchas deportivas.', 'https://betaimages.lopes.com.br/realestate/sml/REO820675/71A29EFBE6D1EA88242BBF1A789D7085.JPG'),
 ('La Joya', 'Condominio', 'Condominio de lujo con servicios exclusivos.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 ('Los Pinos', 'Residencial', 'Comunidad residencial con amplias zonas verdes.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 ('Vista Hermosa', 'Condominio', 'Condominio con vistas panorámicas y diseño moderno.', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
@@ -134,10 +134,10 @@ INSERT INTO proyecto_FindYourHome.comunidad (nombre, tipo, descripcion,ruta_imag
 
 INSERT INTO proyecto_FindYourHome.propiedad (id_vendedor, id_comunidad, nombre, descripcion, precio, tipo_propiedad, ubicacion,ruta_imagen) VALUES
 (1, 1, 'Casa en Residencial San José', 'Amplia casa de dos pisos con jardín y garaje.', 350000, 'Casa', 'San José', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
-(2, 2, 'Apartamento de Lujo en Los Alamos', 'Moderno apartamento con acabados de alta calidad.', 500000, 'Apartamento', 'Los Alamos', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
+(2, 2, 'Apartamento de Lujo en Los Alamos', 'Moderno apartamento con acabados de alta calidad.', 500000, 'Apartamento', 'Los Alamos', 'https://media.yaencontre.com/img/photo/w630/54926/54926-47990358-1263114725.jpg'),
 (3, 3, 'Casa Familiar en Villas del Sol', 'Acogedora casa con patio y espacios para niños.', 280000, 'Casa', 'Villas del Sol', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 (4, 4, 'Vista Panorámica en Bosques de la Montaña', 'Casa con vistas espectaculares y amplias áreas verdes.', 800000, 'Casa', 'Bosques de la Montaña', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
-(5, 5, 'Terreno en Parque Residencial', 'Lote residencial ideal para construir la casa de tus sueños.', 120000, 'Terreno', 'Parque Residencial', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
+(5, 5, 'Terreno 240m2', 'Lote residencial ideal para construir la casa de tus sueños.', 120000, 'Terreno', 'Parque Residencial', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 (6, 6, 'Penthouse de Lujo en La Joya', 'Exclusivo penthouse con terraza privada y jacuzzi.', 750000, 'Apartamento', 'La Joya', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 (7, 7, 'Casa con Jardín en Los Pinos', 'Amplia casa con jardín y espacios para la familia.', 420000, 'Casa', 'Los Pinos', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
 (8, 8, 'Vista Hermosa: Apartamento Moderno', 'Apartamento con diseño moderno y vistas impresionantes.', 550000, 'Apartamento', 'Vista Hermosa', 'https://mls.re.cr/api/images/ll1500248/ll1500248_img-14_large.jpg'),
@@ -167,6 +167,6 @@ INSERT INTO proyecto_FindYourHome.favorito (id_usuario, id_propiedad) VALUES
 (8, 8),
 (9, 9),
 (10, 10),
-(10, 5),
-(7, 5),
+(10, 2),
+(7, 2),
 (1, 7);
