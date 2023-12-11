@@ -1,55 +1,54 @@
-import com.proyecto.domain.Usuario;
-import com.proyecto.service.UsuarioService;
-import com.proyecto.service.impl.FirebaseStorageServiceImpl;
+package com.proyecto.controller;
+
+import com.proyecto.domain.Favorito;
+import com.proyecto.domain.Propiedad;
+import com.proyecto.service.ComunidadService;
+import com.proyecto.service.FavoritoService;
+import com.proyecto.service.ImagenPropiedadService;
+import com.proyecto.service.PropiedadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/home")
 public class HomeController {
 
-    @GetMapping("/")
-    public String index() {
-        return "index"; // Return the name of your index.html template
-    }
-    
-        @Autowired
-    private UsuarioService usuarioService;
+    @Autowired
+    private ComunidadService comunidadService;
     
     @Autowired
-    private FirebaseStorageServiceImpl firebaseStorageService;
+    private FavoritoService favoritoService;
     
-    /**
-     *
-     * @param usuario
-     * @param imagenFile
-     * @param model
-     * @return 
-     */
-    @PostMapping("/registrarTest")
-    public String UsuarioRegistrar(Usuario usuario,
-            @RequestParam("imagenFile") MultipartFile imagenFile, Model model) {
-        try {
-            if (!imagenFile.isEmpty()) {
-                usuarioService.save(usuario);
-                usuario.setRutaImagen(
-                        firebaseStorageService.cargaImagen(
-                                imagenFile,
-                                "usuario",
-                                usuario.getIdUsuario()));
-            }
-            usuarioService.save(usuario);
+    @Autowired
+    private PropiedadService propiedadService;
 
-            model.addAttribute("message", "User registered successfully");
-            return "redirect:/"; // Replace with the actual form view
-        } catch (Exception e) {
-            // Set error message
-            model.addAttribute("error", "Error registering user: " + e.getMessage());
-            return "redirect:/"; // Replace with the actual form view
+    @GetMapping("/info")
+    public String listado(Model model) {
+        var favoritos = favoritoService.getFavoritos();
+        var propiedades = propiedadService.getPropiedades();
+        Propiedad PropiedadMasPopular = null;
+        long maxValue = 0;
+        
+        for(Favorito favorito : favoritos){
+            if(favoritos.stream().filter(f -> f.getPropiedad().getNombre().equals(favorito.getPropiedad().getNombre())).count() >= maxValue){
+                maxValue = favoritos.stream().filter(f -> f.getPropiedad().getNombre().equals(favorito.getPropiedad().getNombre())).count();
+                PropiedadMasPopular = favorito.getPropiedad();
+            }
         }
+        
+        model.addAttribute("PropiedadMasPopular", PropiedadMasPopular);
+        model.addAttribute("propiedades", propiedades);
+        return "/home/info";
     }
+    
+    @GetMapping("/ver/{idPropiedad}")
+    public String verPropiedad(Propiedad propiedad, Model model) {
+        propiedad = propiedadService.getPropiedad(propiedad);
+        model.addAttribute("propiedad", propiedad);
+        return "/home/ver";
+    }
+    
 }

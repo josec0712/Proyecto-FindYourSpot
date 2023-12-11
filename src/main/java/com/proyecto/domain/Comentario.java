@@ -20,10 +20,15 @@ public class Comentario implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_comentario")
     private long idComentario;
-    private long idComunidad;
-    private long idUsuario;
     private String comentario;
-    private Date fecha;
+    
+    @ManyToOne
+    @JoinColumn(name="id_comunidad")
+    Comunidad comunidad;
+    
+    @ManyToOne
+    @JoinColumn(name="id_usuario")
+    Usuario usuario;
 
     public Comentario() {
     }

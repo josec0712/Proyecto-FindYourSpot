@@ -20,8 +20,14 @@ public class Favorito implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_favorito")
     private long idFavorito;
-    private long idUsuario;
-    private long idPropiedad;
+    
+    @ManyToOne
+    @JoinColumn(name="id_usuario")
+    Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name="id_propiedad")
+    Propiedad propiedad;
 
     public Favorito() {
     }

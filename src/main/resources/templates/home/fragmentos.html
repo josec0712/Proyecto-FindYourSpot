@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Find Your Spot</title>
+    </head>
+    <body>
+
+        <section th:fragment="PropiedadDestacada" id="propiedades">
+            <div class="container">
+                <div class="row m-3">
+                    <div class="m-3">
+                        <h1>Propiedad más popular entre los usuarios</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <img th:src="${PropiedadMasPopular.rutaImagen}" class="rounded img-fluid" alt="Propiedad Destacada"/>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card w-75 h-100">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h2>[[${PropiedadMasPopular.nombre}]]</h2>
+                                </div>
+                                <p class="card-text"><strong>Precio:</strong> [[${PropiedadMasPopular.precio}]]</p>
+                                <p class="card-text"><strong>Ubicación:</strong> [[${PropiedadMasPopular.ubicacion}]]</p>
+                                <a th:href="@{/home/ver/}+${PropiedadMasPopular.idPropiedad}"
+                                   class="btn btn-success">
+                                    <i class="fas fa-eye"></i> Ver detalles</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="ListaDePropiedades" id="lisPropiedades">
+            <div class="container">
+                <div class="row m-3">
+                    <div class="m-3">
+                        <h2>Todas las propiedades disponibles</h2>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr><th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Ubicación</th>
+                                    <th>Precio</th>
+                                    <th></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="propiedad, contador : ${propiedades}">
+                                    <td>[[${contador.count}]]</td>
+                                    <td>[[${propiedad.nombre}]]</td>
+                                    <td>[[${propiedad.ubicacion}]]</td>
+                                    <td>[[${propiedad.precio}]]</td>
+
+
+                                    <td sec:authorize="hasRole('ROLE_ADMIN')">
+
+                                        <a th:href="@{/home/ver/}+${propiedad.idPropiedad}"
+                                           class="btn btn-primary">
+                                            <i class="fas fa-eye"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+  
+        <section th:fragment="verPropiedad" id="verPropiedad">
+            <div class="row m-5">
+                    <h1 class="m-2">Visita esta hermosa propiedad</h1>
+                    <h4 class="m-2">Te mostramos los detalles</h4>
+                    <h5 class="m-2">Contacta a [[${propiedad.vendedor.nombre}]] [[${propiedad.vendedor.apellidos}]] para saber mas de esta propiedad</h5>
+                    <p class="m-2"><strong>Teléfono:</strong> [[${propiedad.vendedor.telefono}]]</p>
+            </div>
+            <div class="row m-5">
+                <div class="col-md-7">
+                    <h2>Propiedad</h2>
+                    <div class="card">
+                        <img th:src="${propiedad.rutaImagen}" class="card-img-top"/>
+                            <div class="card-body">
+                                <h5 class="card-title">[[${propiedad.nombre}]]</h5>
+                                <p class="card-text">[[${propiedad.descripcion}]]</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Precio:</strong> [[${propiedad.precio}]]</li>
+                                <li class="list-group-item"><strong>Ubicación:</strong> [[${propiedad.ubicacion}]]</li>
+                                <li class="list-group-item"><strong>Tipo de propiedad:</strong> [[${propiedad.tipoPropiedad}]]</li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <h2>Comunidad</h2>
+                    <div class="card">
+                        <img th:src="${propiedad.comunidad.rutaImagen}" class="card-img-top"/>
+                            <div class="card-body">
+                                <h5 class="card-title">Explora [[${propiedad.comunidad.nombre}]]</h5>
+                                <p class="card-text">[[${propiedad.comunidad.descripcion}]]</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Tipo:</strong> [[${propiedad.comunidad.tipo}]]</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </body>
+</html>

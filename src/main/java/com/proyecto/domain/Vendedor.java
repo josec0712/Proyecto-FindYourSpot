@@ -6,7 +6,6 @@ package com.proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 @Data
@@ -20,7 +19,8 @@ public class Vendedor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_vendedor")
     private long idVendedor;
-    private long idUsuario;
+    private String nombre;
+    private String apellidos;
     private String telefono;
     private boolean activo;
 

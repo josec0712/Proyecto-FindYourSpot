@@ -20,8 +20,11 @@ public class ImagenComunidad implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_imagenComunidad")
     private long idImagenComunidad;
-    private long idComunidad;
     private String rutaImagen;
+    
+    @ManyToOne
+    @JoinColumn(name="id_comunidad")
+    Comunidad comunidad;
 
     public ImagenComunidad() {
     }

@@ -6,7 +6,6 @@ package com.proyecto.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 @Data
@@ -20,26 +19,22 @@ public class Propiedad implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_propiedad")
     private long idPropiedad;
-    private long idVendedor;
-    private long idComunidad;
     private String nombre;
     private String descripcion;
     private float precio;
     private String tipoPropiedad;
     private String ubicacion;
-    private Date fechaPublicacion;
+    private String rutaImagen;
+    
+    @ManyToOne
+    @JoinColumn(name="id_vendedor")
+    Vendedor vendedor;
+    
+    @ManyToOne
+    @JoinColumn(name="id_comunidad")
+    Comunidad comunidad;
     
     public Propiedad() {
     }
-
-    public void setRutaImagen(String cargaImagen) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Long getIdPropiedad() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
 }
 

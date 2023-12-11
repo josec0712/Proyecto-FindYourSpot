@@ -20,8 +20,11 @@ public class ImagenPropiedad implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_imagenPropiedad")
     private long idImagenPropiedad;
-    private long idPropiedad;
     private String rutaImagen;
+    
+    @ManyToOne
+    @JoinColumn(name="id_propiedad")
+    Propiedad propiedad;
 
     public ImagenPropiedad() {
     }

@@ -22,7 +22,7 @@ public class VendedorController {
     @GetMapping("/listado")
     public String listado(Model model) {
         var vendedores = vendedorService.getVendedores();
-        model.addAttribute("vendedor", vendedores);
+        model.addAttribute("vendedores", vendedores);
         model.addAttribute("totalVendedores", vendedores.size());
         return "/vendedor/listado";
     }
